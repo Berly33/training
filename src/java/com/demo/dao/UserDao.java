@@ -14,6 +14,6 @@ public interface UserDao {
     /**
      * 注册
      */
-    void resign();
+    void register(User user) throws Exception;
 
 }

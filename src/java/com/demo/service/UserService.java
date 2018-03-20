@@ -12,5 +12,6 @@ public interface UserService {
     /**
      * 注册
      */
-    void resign();
+
+    void register(User user) throws Exception;
 }

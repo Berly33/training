@@ -38,7 +38,20 @@ public class UserDaoImpl implements UserDao {
         return null;
     }
 
-    public void resign() {
+    public void register(User user) {
+        try {
+            conn = JdbcUtil.getConnect();
+            String sql = "insert into user (username,password) values(?,?)";
+            preparedStatement=conn.prepareStatement(sql);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            JdbcUtil.close(preparedStatement, conn);
+        }
     }
 }

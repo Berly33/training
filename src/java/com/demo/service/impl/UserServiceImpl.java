@@ -16,8 +16,8 @@ public class UserServiceImpl implements UserService {
         return userDao.login(user);
     }
 
-    public void resign() {
-
+    public void register(User user) throws Exception {
+        userDao.register(user);
     }
 
 }
