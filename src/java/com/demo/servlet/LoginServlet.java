@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
 
+
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
@@ -37,6 +38,7 @@ public class LoginServlet extends HttpServlet {
         System.out.println(user1.getPassword());
 
         if(user1.getUsername() != null && user1.getPassword() != null){
+            req.getSession().setAttribute("user",user1);
             resp.sendRedirect(req.getContextPath()+"/index.jsp");
         }else{
             resp.sendRedirect(req.getContextPath()+"/login.jsp");

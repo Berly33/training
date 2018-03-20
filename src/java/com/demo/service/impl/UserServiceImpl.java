@@ -20,4 +20,8 @@ public class UserServiceImpl implements UserService {
         userDao.register(user);
     }
 
+    public User select(int id) throws Exception{
+        return userDao.select(id);
+    }
+
 }

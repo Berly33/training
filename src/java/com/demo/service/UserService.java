@@ -14,4 +14,6 @@ public interface UserService {
      */
 
     void register(User user) throws Exception;
+
+    User select(int id) throws  Exception;
 }

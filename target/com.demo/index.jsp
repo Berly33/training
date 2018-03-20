@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.demo.entity.User" %><%--
   Created by IntelliJ IDEA.
   User: changduo
   Date: 17-11-9
@@ -34,15 +34,31 @@
     }
 </style>
 <body>
-
+<%
+    User user= (User) request.getSession().getAttribute("user");
+%>
 <div class="img_1">
     <img src="./img/news-1.jpg" alt="..." class="center-block" >
 </div>
 
 <div class="h1">
-    Hello World!
+    Hello World!<br>
+    <h2>您好：
+        <% if (user != null) {%>
+        <%=user.getUsername()%>
+        <%=user.getId()%>
+        <%=user.getPassword()%>
+        <% }else{
+            response.sendRedirect(request.getContextPath()+"/login.jsp");
+        }%>
+    </h2>
+    <div>
+        <input type="button" value="修改个人信息" onclick="">
+        <a href="info.jsp">修改个人信息</a>
+    </div>
 </div>
 <div class="h2">
+
     我是一枚水瓶座的女生,请多关照！
 </div>
 <div class="row">

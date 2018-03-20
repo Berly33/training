@@ -54,4 +54,29 @@ public class UserDaoImpl implements UserDao {
             JdbcUtil.close(preparedStatement, conn);
         }
     }
+
+    public User select(int id)throws Exception {
+        conn = JdbcUtil.getConnect();
+
+        String sql = "select * from user where id = ? ";
+
+        User user1 = new User();
+
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,id);
+            resultSet = preparedStatement.executeQuery();
+
+            if(resultSet.next()){
+                user1.setId(resultSet.getInt(1));
+                user1.setUsername(resultSet.getString(2));
+                user1.setPassword(resultSet.getString(3));
+            }
+            return  user1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

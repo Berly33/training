@@ -16,4 +16,5 @@ public interface UserDao {
      */
     void register(User user) throws Exception;
 
+    User select(int id)throws Exception;
 }
