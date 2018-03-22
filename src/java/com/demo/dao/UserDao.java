@@ -2,6 +2,7 @@ package com.demo.dao;
 
 import com.demo.entity.User;
 
+import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 public interface UserDao {
@@ -17,4 +18,6 @@ public interface UserDao {
     void register(User user) throws Exception;
 
     User select(int id)throws Exception;
+
+    List<User> getalluser() throws Exception;
 }

@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     private Connection conn;
@@ -73,6 +75,34 @@ public class UserDaoImpl implements UserDao {
                 user1.setPassword(resultSet.getString(3));
             }
             return  user1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<User> getalluser(){
+        //获取连接
+        conn = JdbcUtil.getConnect();
+        //写一个sql语句
+        String sql = "select * from user";
+        //动态执行sql语句
+        try {
+            preparedStatement = conn.prepareStatement(sql);
+            //添加结果集，保存查询出来的对象
+            resultSet = preparedStatement.executeQuery();
+
+            List<User> userList = new ArrayList<User>();
+
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setPassword(resultSet.getString("password"));
+                user.setUsername(resultSet.getString("username"));
+
+                userList.add(user);
+            }
+            return userList;
         } catch (SQLException e) {
             e.printStackTrace();
         }

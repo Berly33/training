@@ -55,6 +55,7 @@
     <div>
         <input type="button" value="修改个人信息" onclick="">
         <a href="info.jsp">修改个人信息</a>
+        <input type="button" onclick="toUserList()" value="所有用户">
     </div>
 </div>
 <div class="h2">
@@ -156,7 +157,12 @@
 
         </ul>
     </div>
-
 </div>
+
+<script>
+    function toUserList() {
+        window.location.href = "/ListUserServlet";
+    }
+</script>
 </body>
 </html>
